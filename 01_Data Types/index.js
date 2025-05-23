@@ -47,5 +47,21 @@ console.log(person);
 // Arrays
 let arr = ["Iron Man", "Batman", "Superman", "Spider-Man", "Captain America"];
 
-console.log(arr);
+// console.log(arr);
+// console.log(arr.length);
+// console.log(arr[arr.length - 6]); // undefined
+
+// mix arrays
+
+let mixed = [42, "hello", true, {name: "Natasha"}];
+console.log(mixed);
+
+/**COMMENTS ARE USED TO EXPLAIN THE PIECE OF CODE */
+
+/**comments, semicolon and best practices
+ * 
+ * semicolan is not mandatory but is used to tell that line ends there.
+ * 
+ */
+
 
