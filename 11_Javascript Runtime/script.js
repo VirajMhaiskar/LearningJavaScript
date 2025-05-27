@@ -110,12 +110,76 @@
 
 /**HOISTING IN JS AND TEMPORAL DEAD ZONE(TDZ)
  * 
- *  
- * 
  * Temporal Dead Zone:- A zone between the start of the scope of variable and where it 
  * is declared/initialized.
  */
 
+/**What is scope
+ * 
+ * A scope controls how JS variables and functions are organized and accessed by JS engine.
+ * A scope tells, where a JS variable or function is created and where they can be accessed.
+ * 
+ * 1.Global scope 2.Function Scope 3.Block scope
+ * 
+ * NOTE: A variable declared using var keyword will always have function scope, even if
+ * the variable is declared inside a code block
+ * 
+ * Lexical Scope:- Lexical scope means that the way the variables and functions are organized
+ * and accessed is entirely controlled by the placement of function and of code blocks inside
+ * the program code.
+ * 
+ * If a function or code block is sitting lexically within another scope, then that function
+ * or code block will have access to all variables and functions declared inside its parent scope.
+ * 
+ */
 
 
+/**Scope Chain and Lexical Environment
+ * 
+ * Lexical Environment:- A lexical environment is a structure that holds identifies-variable
+ * mapping. Here, identifier refers to the name of the variable/function, and the variable is
+ * a reference to an actual object.
+ * 
+ * During the creation phase, a lexical environment gets created for the scope of the current
+ * function. In creation phase, lexical environment is identical to variable object.
+ * 
+ * A new scope gets created for each lexical environment, but only when the code in that lexcial
+ * environment is executed. The lexical environment also has a reference to its outerlexical environment
+ * 
+ * Scope Chain:- A scope chain is a hierarchical structure that JS uses to search for variables
+ * and functions. It's essentially a linked list of accessible scopes, from the most immetdiate
+ * context to the global context.
+ * 
+ * When is the Scope Chain created?
+ * The scope chain for a function is created during the creation phase of that function's execution
+ * context. This happens before the function is actually executed.
+ * 
+ * How is the scope chain created?
+ * Lexical environment:- Each function has its own lexical environment, which contains an
+ * environment record and a reference to the outer lexical environment.
+ * 
+ * Outer Reference:- The outer reference in a lexical environment points to the parent scope's
+ * lexical environment.
+ * 
+ * Scope chain formation:- When a function is executed, its lexical environment becomes the 
+ * starting point of the scope chain. THe outer reference in this environment points to the
+ * next scope in the chain, and so on, until the global scope is reached.
+ * 
+ */
 
+/**Value of this Variable
+ * 
+ * The value of "this" keyword in JS is determined dynamically at runtime based on the calling
+ * context of the function. The value of this is determined when the function is called, not
+ * when it's defined.
+ * 
+ * During the creation phase of execution context, an initial value is assigned to "this" variable
+ * which is determined by how the function us called (global, method, constructor etc). However,
+ * the initial value is just a placeholder. This placeholder is necessary because the JS engine needs
+ * to allocate memory fot the "this" variable withing the execution context before the function
+ * starts running.
+ * 
+ * The actual value of "this" is determined during the execution phase, based on the calling context at
+ * the time the function is invoked. This means the value of this can change within the same function
+ * depending on how it's called.
+ */
