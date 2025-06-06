@@ -326,12 +326,12 @@ const numberGreaterThanTen = numbers.find((ele, index, arr) => {
  * ➡️ Important:-> It does not modify the original array.
  */
 
-const numbers = [5, 12, 8, 130, 44];
-const users = [
-    { id: 1, name: "Alice" },
-    { id: 2, name: "Bob" },
-    { id: 3, name: "Charlie" },
-];
+// const numbers = [5, 12, 8, 130, 44];
+// const users = [
+//     { id: 1, name: "Alice" },
+//     { id: 2, name: "Bob" },
+//     { id: 3, name: "Charlie" },
+// ];
 
 /* ALL PARAMETER OF FINDINDEX
 const num = numbers.findIndex((element, index, arr) => {
@@ -339,21 +339,163 @@ const num = numbers.findIndex((element, index, arr) => {
 });
 */
 
-const num = numbers.findIndex((ele) => {
-    return ele > 40;
+// const num = numbers.findIndex((ele) => {
+//     return ele > 40;
+// });
+// console.log(num);
+
+// const userId = users.findIndex((ele) => ele.id === 2 );
+// console.log(userId);
+
+
+
+/**ARRAY SOME METHOD
+ * 
+ * The some() method tests whether at least one element in the array passes the test implemented by the provided
+ * function.
+ * 
+ * Return Value: -->
+ * ➡️ If at least one element passes the test, some() return true.
+ * ➡️ If none of the elements pass the test, some() returns false.
+ * 
+ * Key points: -->
+ * ➡️ The some() method only checks if at least one element satisfies the condition, not all elements.
+ * ➡️ The some() method does not modify the original array.
+ */
+
+const numbers = [5, 10, 8, 130, 44];
+const users = [
+    { id: 1, name: "Alice", isActive: true },
+    { id: 2, name: "Bob", isActive: false },
+    { id: 3, name: "Charlie", isActive: true },
+];
+
+//ALL PARAMETERS OF SOME() METHOD
+// numbers.some((el ,index, arr) => {
+//     console.log(el, index, arr);
+// });
+
+// const hasEvenNumber = numbers.some((el) => {
+//     return el % 2 === 0;
+// });
+
+// console.log(hasEvenNumber);
+
+
+/**ARRAY EVERY METHOD
+ * 
+ * The every() method tests whether all the element in the array passes the test implemented by th provided 
+ * callback function.
+ * 
+ * Return Value: --> 
+ * ➡️ If all elements passes the test, every() return true.
+ * ➡️ If any element fails the test, every() returns false.
+ * 
+ * Key Points: -->
+ * ➡️ The every() method checks if all the elements satisfies the condition, not just one element.
+ * ➡️ The every() method does not modify the original array.
+ */
+
+//  EVERY PARAMETER IN EVERY METHOD
+// users.every((element, index, arr) => {
+// });
+
+
+// const allActiveUsers = users.every((ele) => {
+//     return ele.isActive;
+// });
+
+// console.log(allActiveUsers);
+
+
+/**ARRAY FLAT METHOD
+ * 
+ * The flat() method creates a new array by recursively flattening a given arrat up to a specified depth. If no
+ * depth is specified. it defaults to 1.
+ * 
+ * ➡️ depth(optional):-> Specifies how deep a nested array structure should be flattened. Defaults to 1.
+ * ➡️ Infinity can be used to flatten all nested arrays regardless if their depth.
+ * ➡️ Returns a new array without modifying the original array.
+ */
+
+const nestedArray = [1, 2, [3, 4]];
+const deeplyNestedArray = [1, 2, [3, 4, [5, 6]]];
+const sparseArray = [1, , 3, [4, , 6]];
+
+const employee = [
+    { id: 1, name: "John", skills: ["HTML", "CSS", "JS"] },
+    { id: 2, name: "Mark", skills: ["C#", "SQL"] },
+    { id: 3, name: "Merry", skills: ["Angular", "React"] },
+];
+
+// const flattenedArray = nestedArray.flat(); //DOES NOT MODIFY ORIGINAL ARRAY.
+// console.log(flattenedArray);
+// console.log(nestedArray);
+
+// let flattenedArray = deeplyNestedArray.flat(Infinity); //DOES NOT MODIFY ORIGINAL ARRAY.
+// console.log(flattenedArray);
+// console.log(deeplyNestedArray);
+
+
+// let flattenedArray = sparseArray.flat(); //DOES NOT MODIFY ORIGINAL ARRAY.
+// console.log(flattenedArray);
+// console.log(sparseArray);
+
+// const allSkills = employee.map((emp) => {
+//     return emp.skills;
+// }).flat();
+
+// console.log(allSkills);
+
+/**ARRAY FLATMAP METHOD
+ * 
+ * The flatMap() method first maps each element of the array to a new array using a provided function, and then
+ * flattends the result into a new array. It's effectively a combination of map() and flat() (with a depth of 1).
+ * 
+ * ➡️ Returns a new array without modifying the original array.
+ */
+
+const allSkillsMap = employee.flatMap((emp) => {
+    return emp.skills;
 });
-console.log(num);
 
-const userId = users.findIndex((ele) => ele.id === 2 );
-console.log(userId);
-
+//COMBINES BOTH MAP AND FLAT METHOD ON AN ARRAY.
+// console.log(allSkillsMap);
 
 
+/**ES2022 AT METHOD IN JS
+ * 
+ * The at() method in JS is a relatively new addition (ES2022) to arrays and strings that provides a concise way
+ * to access elements at a specific index, including negative indices. It's defigned to simplify accessing elements
+ * from the end of an array or string.
+ */
 
+const myArray = ["Apple", "Banana", "Cherry", "Date"];
+// console.log(myArray.at(-3));
 
+/**INDEXOF METHOD
+ * 
+ * The indexOf() method returns the first index at which a given element can be found in the string or array,
+ * or -1 if it is not present.
+ */
 
+// console.log(myArray.indexOf("Cherry"));
 
+const names = ["Tony", "Steve", "Banner", "Natasha", "Thor"];
 
+const removeElement = ((name) => {
+    let index = names.indexOf(name);
+    if(index >= 0) {
+        names.splice(index, 1);
+    } else{
+        console.log("Name not found");
+        
+    }
+})
+removeElement("Steve");
+removeElement("Viraj");
+
+console.log(names);
 
 
 
