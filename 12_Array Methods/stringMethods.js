@@ -231,12 +231,12 @@
  * of the string
  */
 
-const str = "Hello World";
-const products = [
-    { id: 1, name: "Smart Watch", price: 129 },
-    { id: 2, name: "Analog Watch", price: 29 },
-    { id: 3, name: "Smart TV", price: 1399 },
-];
+// const str = "Hello World";
+// const products = [
+//     { id: 1, name: "Smart Watch", price: 129 },
+//     { id: 2, name: "Analog Watch", price: 29 },
+//     { id: 3, name: "Smart TV", price: 1399 },
+// ];
 
 // const isIncluded = str.includes(" "); //CASE SENSITIVE
 // console.log(isIncluded);
@@ -249,30 +249,30 @@ const products = [
 
 //USECASE: EMAIL IS VALID OR NOT
 
-const validateEmail = ((email) => {
-    let isValid = false;
-    if(!email.startsWith("@")) {
-        isValid = true;
-    }
-    if(!email.endsWith(".com")) {
-        isValid = false;
-    }
-    if(!email.includes("@")) {
-        isValid = false;
-    }
-    return isValid
-});
+// const validateEmail = ((email) => {
+//     let isValid = false;
+//     if(!email.startsWith("@")) {
+//         isValid = true;
+//     }
+//     if(!email.endsWith(".com")) {
+//         isValid = false;
+//     }
+//     if(!email.includes("@")) {
+//         isValid = false;
+//     }
+//     return isValid
+// });
 
 // console.log(validateEmail("example@gmail.com"));
 
 
 //USE CASE: FILTER PRODUCT BY NAME
 
-const filterProduct = ((searchString) => {
-    return products.filter((p) => p.name.toLocaleLowerCase().includes(searchString));
-})
+// const filterProduct = ((searchString) => {
+//     return products.filter((p) => p.name.toLocaleLowerCase().includes(searchString));
+// })
 
-console.log(filterProduct("watch"));
+// console.log(filterProduct("watch"));
 
 
 /**HOW ARE STRING METHODS CALLED?
@@ -301,6 +301,78 @@ console.log(filterProduct("watch"));
  * In simpler terms: JS "wraps" the primitive string in an object just long enough to execute the method, and then
  * "unwraps" it to give you the desired result. 
  */
+
+
+/**PADSTART AND PADEND METHODS OF STRING
+ * 
+ * The padStart() and padEnd() are string methods in JS introduced in ES2017 that allow you to pad a string with
+ * another string(or spaces) until it reaches a specified length.
+ * 
+ * The padStart() pads at the beginning, and padEnd() pads at the end.
+ * 
+ * They are very useful for formatting strings, especially when you need consistent lengths, like for displying
+ * data in tables or aligning text.
+ */
+
+/**PADSTART METHOD OF STRING
+ * 
+ * The padStart() method pads the beginning of a string with another string (repeated if necessary) until it
+ * reaches a given lenght,
+ * 
+ * The padStart() method takes two arguments:
+ * 
+ * ➡️ targetLength(): The desired length of the resulting string.
+ * ➡️ padString(optional): The string to pad with. If omitted, itdefaults to a space.
+ */
+
+// const email = "example@gmail.com";
+// const cardNumber = "1234657890123456";
+// const str = "ABC";
+
+// console.log(str.padStart(8, "*"));
+// console.log(str.padEnd(8, "*"));
+
+// const maskCardNumber = ((card) => {
+//     const x = card.slice(-4);
+//     return x.padStart(card.length, "*")
+// })
+// console.log(maskCardNumber(cardNumber));
+
+// const maskEmail = ((email) => {
+//     const x = email.slice(0, 5);
+//     return x.padEnd(email.length, "*")
+// })
+// console.log(maskEmail(email));
+
+
+/**REPEAT METHOD OF STRING
+ * 
+ * The repeat() method constructs and returns a new string which contains the concetenated copies of the string
+ * on which it is called, repeated a given number of times.
+ * 
+ * The repeat() method takes a single arguments:
+ * 
+ * ➡️ count: An integer between 0 and infinity(inclusive) indicating the number of times to repeate the string.
+ */
+
+
+const str = "ABC";
+const greet = "Hello";
+const message = "JavaScript";
+
+console.log(str.repeat(0)); // --> empty string
+
+/**CONCAT MEHTOD OF STRING
+ * 
+ * The concat() method combines one or more strings to create a new string. It's functionally similar to the + 
+ * operator for string concatenation but can be used to concatenate multiple strings at once.
+ */
+
+console.log(greet.concat(message)); //HelloJavaScript
+console.log(greet.concat(" ",message)); //Hello JavaScript
+
+
+
 
 
 
