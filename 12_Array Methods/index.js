@@ -363,12 +363,12 @@ const num = numbers.findIndex((element, index, arr) => {
  * ➡️ The some() method does not modify the original array.
  */
 
-const numbers = [5, 10, 8, 130, 44];
-const users = [
-    { id: 1, name: "Alice", isActive: true },
-    { id: 2, name: "Bob", isActive: false },
-    { id: 3, name: "Charlie", isActive: true },
-];
+// const numbers = [5, 10, 8, 130, 44];
+// const users = [
+//     { id: 1, name: "Alice", isActive: true },
+//     { id: 2, name: "Bob", isActive: false },
+//     { id: 3, name: "Charlie", isActive: true },
+// ];
 
 //ALL PARAMETERS OF SOME() METHOD
 // numbers.some((el ,index, arr) => {
@@ -418,15 +418,15 @@ const users = [
  * ➡️ Returns a new array without modifying the original array.
  */
 
-const nestedArray = [1, 2, [3, 4]];
-const deeplyNestedArray = [1, 2, [3, 4, [5, 6]]];
-const sparseArray = [1, , 3, [4, , 6]];
+// const nestedArray = [1, 2, [3, 4]];
+// const deeplyNestedArray = [1, 2, [3, 4, [5, 6]]];
+// const sparseArray = [1, , 3, [4, , 6]];
 
-const employee = [
-    { id: 1, name: "John", skills: ["HTML", "CSS", "JS"] },
-    { id: 2, name: "Mark", skills: ["C#", "SQL"] },
-    { id: 3, name: "Merry", skills: ["Angular", "React"] },
-];
+// const employee = [
+//     { id: 1, name: "John", skills: ["HTML", "CSS", "JS"] },
+//     { id: 2, name: "Mark", skills: ["C#", "SQL"] },
+//     { id: 3, name: "Merry", skills: ["Angular", "React"] },
+// ];
 
 // const flattenedArray = nestedArray.flat(); //DOES NOT MODIFY ORIGINAL ARRAY.
 // console.log(flattenedArray);
@@ -455,9 +455,9 @@ const employee = [
  * ➡️ Returns a new array without modifying the original array.
  */
 
-const allSkillsMap = employee.flatMap((emp) => {
-    return emp.skills;
-});
+// const allSkillsMap = employee.flatMap((emp) => {
+//     return emp.skills;
+// });
 
 //COMBINES BOTH MAP AND FLAT METHOD ON AN ARRAY.
 // console.log(allSkillsMap);
@@ -470,7 +470,7 @@ const allSkillsMap = employee.flatMap((emp) => {
  * from the end of an array or string.
  */
 
-const myArray = ["Apple", "Banana", "Cherry", "Date"];
+// const myArray = ["Apple", "Banana", "Cherry", "Date"];
 // console.log(myArray.at(-3));
 
 /**INDEXOF METHOD
@@ -481,21 +481,119 @@ const myArray = ["Apple", "Banana", "Cherry", "Date"];
 
 // console.log(myArray.indexOf("Cherry"));
 
-const names = ["Tony", "Steve", "Banner", "Natasha", "Thor"];
+// const names = ["Tony", "Steve", "Banner", "Natasha", "Thor"];
 
-const removeElement = ((name) => {
-    let index = names.indexOf(name);
-    if(index >= 0) {
-        names.splice(index, 1);
-    } else{
-        console.log("Name not found");
+// const removeElement = ((name) => {
+//     let index = names.indexOf(name);
+//     if(index >= 0) {
+//         names.splice(index, 1);
+//     } else{
+//         console.log("Name not found");
         
-    }
-})
-removeElement("Steve");
-removeElement("Viraj");
+//     }
+// })
+// removeElement("Steve");
+// removeElement("Viraj");
 
+// console.log(names);
+
+
+
+/**THE GROUPBY METHOD
+ * 
+ * The ES2024 update introduces a new static method, Object.groupBy(), that provides a standardized way to group
+ * elements of an iterable(like an array) into an object based on grouping criterion
+ * 
+ * The Object.groupBy() takes two arguments:
+ * 
+ * ➡️ The iterable: The array or other iterable you want to group.
+ * ➡️ A callback function: This function is called for each element in the iterable. It should return the key by
+ * which you want to group the element.
+ */
+
+// const numbers = [2, 4, 3, 7, 8, 16, 31, 28];
+
+// const people = [
+//     { name: "Alice", age: 25, city: "New York" },
+//     { name: "Bob", age: 30, city: "London" },
+//     { name: "Charlie", age: 25, city: "New York" },
+//     { name: "David", age: 35, city: "Paris" },
+//     { name: "Eve", age: 30, city: "London" },
+// ];
+
+
+// const grouped = Object.groupBy(numbers, (number) => {
+//     return number % 2 === 0 ? "Even" : "Odd";
+// });
+
+// console.log(grouped);
+
+// const peopleByCity = Object.groupBy(people, (p) => {
+//     return p.city;
+// })
+// console.log(peopleByCity);
+
+
+/**THE ARRAY FILL METHOD
+ * 
+ * The fill() method modifies an existing array by fillinh all or a portion of its elements with a static value.
+ * 
+ * The Array.fill() method takes three arguments:
+ * ➡️ value: The value to fill the array with.
+ * ➡️ start (optional): The index to start filling from(inclusive). Defaults to 0.
+ * ➡️ end (optional): The index to stop filling at(exclusive). Defaults to array.length.
+ */
+
+// const arr = new Array(8);
+// const numbers = [1, 3, 5, 7, 9];
+
+// arr.fill(1, 2, 5);
+// console.log(arr);
+
+// numbers.fill(1, 2, 5);
+// console.log(numbers);
+
+/**THE ARRAY FROM METHOD
+ * 
+ * The from() method creates a new array from an iterable object(like a string, Map, Set, or an array-like object)
+ * or any object with a lenght property.
+ * 
+ * The Array.from() method takes three arguments:
+ * 
+ * ➡️ arrayLike: The iterable or array-like object to convert to an array.
+ * ➡️ mapFn(optional): A function to call on each element of the array-like object before adding it to the new
+ * array. This is like the map() method.
+ * ➡️ thisArg(optional): Value to use as this when executing mapFn.
+ */
+
+// const charArray = Array.from("hello");
+// console.log(charArray);
+
+// const mapArray = Array.from(numbers, (num) => {
+//     return num * 2;
+// })
+// console.log(mapArray);
+
+/**EX2023: toSorted, toReversed, toSpliced:--> returns new Array do not modify the original array */
+
+const names = ["Tony", "Steve", "Natasha", "Bruce", "Thor", "Clint"];
+
+console.log(names.toSorted());
 console.log(names);
 
+console.log(names.toReversed());
+console.log(names);
 
+console.log(names.toSpliced(1, 2));
+console.log(names);
 
+/**EX2022 --> findLast() & findLastIndex() */
+
+const element = names.findLast((elem) => {
+    return elem.length === 4;
+});
+console.log(element);
+const index = names.findLastIndex((elem) => {
+    return elem.length === 4;
+});
+console.log(index);

@@ -79,8 +79,8 @@ function renderAllMovies(movieList) {
                 <b>Rating:</b><span class="star-rating">${displayStarRating(movie.rating)}</span>
                 </div>
                 <div class="movie-actions">
-                <button>Details</button>
-                <button>Delete</button>
+                <button onclick="showMovieDetails(${movie.id})">Details</button>
+                <button onclick="deleteMovie(${movie.id})">Delete</button>
                 </div>
             </div>
         `;
@@ -176,3 +176,110 @@ function filterByGenre(selectedRadioButton) {
     }
     renderAllMovies(filteredMovies);
 }
+
+function showMovieDetails(movieId) {
+    showMovieDetailsModal();
+
+
+    const selectedMovie = movies.find((movie) => movie.id === movieId);
+    const movieDetailHtml = `
+    
+            <div class="selected-movie-details">
+              <div class="selected-movie-image">
+                <img src="${displayMovieBanner(selectedMovie.image)}" width="100%" height="240">
+              </div>
+              <div class="selected-movie-name">
+                <h2>${formatMovieName(selectedMovie.name)}</h2>
+              </div>
+              <div class="selected-movie-description">
+                <p>${selectedMovie.description}</p>
+              </div>
+              <div class="selected-movie-other-details">
+                <div class="selected-movie-release">
+                  <b>Release Year: </b>
+                  <text>${selectedMovie.releaseYear}</text>
+                </div>
+                <div class="selected-movie-rating">
+                  <b>Rating: ${selectedMovie.rating} &nbsp</b>
+                  <text class="star-rating">${displayStarRating(selectedMovie.rating)}</text>
+                </div>
+                <div class="selected-movie-genre">
+                  <b>Genre:</b>
+                  <text>${formatGenrename(selectedMovie.genre)}</text>
+                </div>
+              </div>
+            </div>
+    `
+
+    const container = document.querySelector("#selected-movie-detail-container");
+    container.innerHTML = "";
+    container.insertAdjacentHTML("beforeend", movieDetailHtml);
+
+}
+
+function showMovieDetailsModal() {
+    document.querySelector("#movie-detail-section").classList.remove("hidden");
+}
+
+function hideMovieDetailsModal() {
+    document.querySelector("#movie-detail-section").classList.add("hidden");
+}
+
+function deleteMovie(movieId) {
+    const movieToDelete = movies.find((movie) => movie.id === movieId);
+    const message = `Do you really want to delete movie: ${formatMovieName(movieToDelete.name)}`;
+    const doDelete = confirm(message);
+
+    if(doDelete) {
+        const movieIndex = movies.findIndex((movie) => movie.id === movieId);
+        movies.splice(movieIndex, 1); // MODIFIES THE EXISTING ARRAY
+    }
+    renderAllMovies(movies);
+}
+
+document.querySelector("#create-movie-form").addEventListener("submit", createMovie);
+
+function createMovie(event) {
+    event.preventDefault();
+    let newMovie = {};
+    newMovie = readFormData(newMovie);
+    movies.push(newMovie);
+    hideCreateMovieModal();
+    renderAllMovies(movies);
+}
+
+function readFormData(movie) {
+    movie.name = readInputFieldValue("name");
+    movie.description = readInputFieldValue("desc");
+    movie.rating = +readInputFieldValue("rating");
+    movie.releaseYear = +readInputFieldValue("releaseYear");
+    movie.genre = getSelectedCheckboxValue("genre");
+
+    return movie;
+}
+
+function readInputFieldValue(id) {
+    return document.getElementById(id).value;
+}
+
+function getSelectedCheckboxValue(elementName) {
+    const selectedValue = [];
+    const checkBoxes = document.getElementsByName(elementName);
+
+    checkBoxes.forEach((checkbox) => {
+        if(checkbox.checked) {
+            selectedValue.push(checkbox.value);
+        }
+    });
+    return selectedValue;
+}
+
+
+function showCreateMovieModal() {
+    document.querySelector(".create-movie-section").classList.remove("hidden");
+}
+
+function hideCreateMovieModal() {
+    document.querySelector(".create-movie-section").classList.add("hidden");
+}
+
